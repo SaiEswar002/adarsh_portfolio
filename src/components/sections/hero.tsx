@@ -31,10 +31,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium mb-6">
-                <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-                {profile.roleLine}
-              </div>
+
             </motion.div>
 
             <motion.h1 
