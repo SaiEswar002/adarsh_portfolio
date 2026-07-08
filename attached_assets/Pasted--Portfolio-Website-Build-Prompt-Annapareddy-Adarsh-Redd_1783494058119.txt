@@ -1,0 +1,182 @@
+# Portfolio Website Build Prompt — Annapareddy Adarsh Reddy
+
+You are a Senior UI/UX Designer, Creative Director, and Senior React Developer with 15+ years of experience building premium executive/consulting portfolio websites.
+
+Build a recruiter-ready, business-professional portfolio website for a BBA (Entrepreneurship Development) graduate applying to postgraduate management programs and early-career business analyst / consulting roles.
+
+**It must not read as a student template.** It should read like the personal site of a junior consultant or MBA candidate — restrained, confident, and fact-driven.
+
+---
+
+## 0. GROUND TRUTH — DO NOT DEVIATE
+
+Every fact on the site must trace back to the source documents (resume, Woxsen interim transcript, migration certificate, ZPHS internship certificate, and the two recommendation letters). If a section has no verified content, **omit it — do not invent, round up, or embellish.**
+
+Confirmed facts to use (do not alter):
+
+- **Name:** Annapareddy Adarsh Reddy
+- **Program:** BBA – Entrepreneurship Development, Woxsen University, Hyderabad (2023–2026)
+- **CGPA:** 8.40 / 10
+- **Semester-wise SGPA:** Sem I 7.31 · Sem II 7.37 · Sem III 8.04 · Sem IV 8.77 · Sem V 9.48 · Sem VI 9.43
+- **Prior education:** Nalanda Vidya Niketan School, Vijayawada — Intermediate (2020–2022), Class X (2008–2020)
+- **Internship (with verifiable detail):** Summer Internship, Z.P. High School, Revendrapadu, Diggirala Mandal, Guntur Dt. (15 May – 5 Jun 2024) — teaching assistance, attendance/documentation support, sports coordination, health & hygiene awareness, reading encouragement, remedial coaching, career counseling sessions
+- **Curriculum note:** Corporate Internship Program and Dissertation (Phase I + Thesis Submission & Defence) were completed as part of the Woxsen curriculum — mention under Education, not as a separate work experience, since no additional detail exists beyond the transcript grade
+- **Leadership role:** Class Representative, School of Business, Woxsen University — coordinated between students and faculty, managed class administration and timely execution of activities/deliverables (per Dr. Melissa Zermit Namchu's letter)
+- **Recommendation letters (2):**
+  - Dr. Nidhi Suthar, Assistant Professor, School of Business — Business Plan Implementation course; cites analytical thinking, structured problem-solving, and clear presentation
+  - Dr. Melissa Zermit Namchu, Ph.D. — CSR & Sustainability course; cites Class Representative leadership, reliability, organization, and analytical/research skills
+- **Certifications (9 total — use this exact count, not "9+"):** Bloomberg Market Concepts (BMC, 2025) · Fundamentals of International Business (2025) · Managing Social and Human Capital (2025) · Organizational Behavior: How to Manage People (2024) · Macroeconomics for Business Management (2024) · Cost Accounting: Decision Making (2024) · An Intuitive Introduction to Probability (2024) · The Power of Markets II: Market Structure and Firm Behavior (2023) · Fundamentals of Management (2023)
+- **Co-curricular / achievements:** Cricket (Under-16 & Under-19 level) · Winner, Punjab Golden Cup (national level) · Champion, Under-19 Reddy's Academy (Tamil Nadu) · Top Bowler of the Tournament, Andhra Cricket Association · NCC 'A' Certificate holder
+- **Contact:** Mangalagiri, Andhra Pradesh 522503 · +91 7075379979 · adarsh.reddy_2026@woxsen.edu.in · linkedin.com/in/adarshreddy07
+
+Quick-stat counters must read: **CGPA 8.40 · 6 Semesters Completed · 1 Internship · 2 Recommendation Letters · 9 Certifications · 1 Leadership Role.**
+
+---
+
+## 1. TECH STACK
+
+- React 19 + Vite
+- Tailwind CSS
+- Framer Motion (UI/scroll animation)
+- GSAP + ScrollTrigger (timeline/chart choreography only — don't duplicate what Framer Motion already handles)
+- Lenis (smooth scroll)
+- Lucide React (icons)
+- Recharts (SGPA line chart)
+- React CountUp + react-intersection-observer (stat counters)
+
+Code standards: component-based, typed props where practical, reusable UI primitives (`<Card>`, `<Section>`, `<Badge>`, `<StatCounter>`), responsive by default, semantic HTML, accessible (proper heading order, alt text, focus states, WCAG AA contrast), SEO-friendly. Scalable folder structure (`/components`, `/sections`, `/data`, `/hooks`, `/assets`).
+
+Keep all resume/certificate/transcript facts in a single `src/data/profile.ts` file so content is edited in one place, not scattered across components.
+
+---
+
+## 2. VISUAL DIRECTION
+
+**Reference feel:** McKinsey, Deloitte, EY, BCG, Harvard/Stanford program pages. Elegant, minimal, quiet confidence. No neon, no cyberpunk, no gaming aesthetics, no gimmicky effects.
+
+### Color palette
+
+| Role | Hex |
+|---|---|
+| Primary (navy) | `#0F172A` |
+| Secondary (blue) | `#2563EB` |
+| Accent (gold — use sparingly: underlines, icons, dividers, small highlights only, never large fills) | `#B8912F` *(darker than #D4AF37 for AA contrast on white)* |
+| Background | `#F8FAFC` |
+| Card surface | `#FFFFFF` |
+| Text primary | `#111827` |
+| Text muted | `#6B7280` |
+
+### Typography
+
+Use a premium consulting-style pairing, not a generic Google Fonts default:
+
+- **Headings:** *Fraunces* (or *Plus Jakarta Sans* as a sans-only alternative) — confident, editorial, slightly distinctive without being decorative
+- **Body:** *Inter* — clean, highly legible, standard for professional dashboards and consulting sites
+- Type scale: generous line-height (1.5–1.7 body), clear hierarchy (H1 ~3.5rem desktop / ~2.25rem mobile down to body 1rem), consistent 8px spacing rhythm
+- Never mix more than 2 font families
+
+---
+
+## 3. SITE STRUCTURE
+
+Sticky navbar — transparent on load, blurred/opaque background after scroll, animated active-section indicator, smooth-scroll on click.
+
+Sections in order: **Home → About → Education → Academic Performance → Experience → Leadership → Recommendations → Certifications → Skills → Achievements → Contact → Footer**
+
+### Hero
+- Split layout: left = name, role line, 2–3 line summary, CTA buttons (Download Resume / View LinkedIn / Contact Me); right = professional photo in a restrained circular or soft-rounded frame
+- Role line (factual, not inflated): **"Business Administration Graduate — Entrepreneurship Development"** with a secondary line such as *"Aspiring Business Analyst & Management Consultant"* (aspiration framed as aspiration, not as an existing title)
+- Summary (rewritten, no fabricated claims): *"BBA graduate specializing in Entrepreneurship Development, with coursework in business strategy, entrepreneurial finance, research methodology, and CSR & sustainability. Experienced in class leadership, cross-functional coordination, and applied business research through capstone and dissertation work."*
+- Background: subtle animated gradient mesh or low-opacity grid, optional slow-floating geometric shapes — restrained, not decorative overload
+
+### About
+- Split layout: photo left, narrative right, grounded only in verified academic/leadership facts (entrepreneurship specialization, dissertation/capstone research, Class Representative leadership, CSR & sustainability coursework)
+- Below narrative: small stagger-animated tag cards — Business Strategy · Entrepreneurship · Leadership · Research · CSR & Sustainability · Analytics
+
+### Quick Stats
+Animated CountUp counters per the corrected numbers in Section 0.
+
+### Education
+Vertical timeline: Nalanda Vidya Niketan (Class X → Intermediate) → Woxsen University (BBA-ED, CGPA 8.40, 2023–2026). Include graduation year and note the completed Dissertation and Corporate Internship Program as curriculum milestones on the Woxsen node.
+
+### Academic Performance
+Recharts animated line chart of the six SGPA data points, X-axis Semester I–VI, Y-axis SGPA. Annotate the trend line with a single caption: **"Consistent upward academic trajectory — SGPA rose from 7.31 to 9.48 across six semesters."** (Don't restate this as a counter stat elsewhere — one clear callout is enough.)
+
+### Experience
+One verified card: ZPHS Revendrapadu Summer Internship (May–Jun 2024) with the bullet points listed in Section 0. Use elegant line icons per bullet, not decorative illustrations.
+
+### Leadership
+Feature card: Class Representative — responsibilities as sourced from the recommendation letter (communication, coordination, faculty collaboration, project/deliverable tracking, time management, organization). Do not add responsibilities beyond what the letter states.
+
+### Recommendations
+Two premium cards (Dr. Nidhi Suthar; Dr. Melissa Zermit Namchu) — name, title, 2–3 line paraphrased (not verbatim-quoted) summary of what each letter praises, plus a "View Letter" button opening a modal/lightbox with the scanned letter image. Do not fabricate additional recommenders.
+
+### Certifications
+Responsive grid, 9 cards exactly as listed in Section 0, each with title, year, and issuing platform/body where known (Bloomberg for BMC; otherwise generic "Online Certification" if provider isn't specified in source material — don't guess a platform name that isn't confirmed).
+
+### Skills
+No progress bars (they imply a false precision). Use grouped skill-tag cards:
+- **Business & Analytical:** Business Strategy, Entrepreneurship, Market Analysis, Financial Accounting, Cost Accounting, Statistical Techniques for Analytics, AI in Business
+- **Tools:** Microsoft Office, Google Workspace, Bloomberg Terminal
+- **Interpersonal:** Leadership, Public Relations, Teamwork, Customer Relations
+- **Languages:** English, Telugu, Tamil
+
+### Achievements
+Cricket-focused cards: Punjab Golden Cup (national-level winner), Under-19 Reddy's Academy champion, Top Bowler (Andhra Cricket Association), NCC 'A' Certificate.
+
+### Contact
+Left: short professional invite to connect on opportunities, research, or collaboration. Right: contact form (Name, Email, Subject, Message — wire to a real form handler or mailto, not a fake success state) plus icon links for LinkedIn, email, phone, location.
+
+### Footer
+Minimal — copyright, social links, back-to-top.
+
+---
+
+## 4. ANIMATION GUIDELINES (high-polish, still restrained)
+
+Use Framer Motion for section/element choreography, GSAP+ScrollTrigger only for the timeline reveal and chart draw-in so the two libraries don't fight over the same elements.
+
+- Page load: brief branded loading screen, then hero fade/slide-up
+- Scroll reveals: fade-up + slight y-offset on section entry, staggered by ~80–120ms per card in a grid
+- Navbar: blur/opacity transition on scroll, animated underline/pill for active section
+- Stat counters: CountUp triggered on viewport entry, run once
+- Timeline: progressive line-draw + node reveal on scroll (GSAP ScrollTrigger)
+- Chart: animated line draw-in with eased point reveal
+- Buttons: subtle hover elevation/scale (1.02–1.03), no exaggerated bounce
+- Optional: magnetic hover only on primary CTA buttons, not every element
+- Respect `prefers-reduced-motion` — provide a static fallback
+
+Avoid: parallax overload, animated cursors that obscure content, more than one continuously-looping background animation, motion on body text.
+
+---
+
+## 5. RESPONSIVENESS & PERFORMANCE
+
+- Fully responsive: mobile, tablet, laptop, desktop breakpoints
+- Target Lighthouse ≥ 95 (performance, accessibility, best practices, SEO)
+- Lazy-load below-the-fold images and the recommendation-letter modal images
+- Optimize/compress all images (WebP where possible), preload the hero photo only
+
+---
+
+## 6. SEO & METADATA
+
+- Descriptive `<title>` and meta description referencing name + "Business Administration Graduate | Entrepreneurship Development"
+- Open Graph + Twitter Card tags with a real preview image
+- JSON-LD `Person` structured data using only verified fields (name, alumniOf: Woxsen University, sameAs: LinkedIn URL)
+- Favicon, semantic landmarks (`<nav>`, `<main>`, `<footer>`)
+
+---
+
+## 7. EXTRA FEATURES
+
+- Light/dark mode toggle (dark mode should stay in the same navy/gold palette family, not shift to a different brand feel)
+- Scroll progress bar
+- Back-to-top button
+- Downloadable resume (link to the actual resume file, not a placeholder)
+
+---
+
+## 8. FINAL GOAL
+
+A visitor should immediately think: *"This person is organized, analytical, leadership-oriented, and ready for consulting, business analysis, or postgraduate study."* Every claim on the page must be traceable to the source documents — polish comes from design and motion craft, not from inflated content.
