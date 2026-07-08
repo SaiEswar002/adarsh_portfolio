@@ -25,7 +25,7 @@ export const Section = ({
             transition={{ duration: 0.6 }}
             className="mb-12 md:mb-16 flex items-center gap-4"
           >
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold">
               {title}
             </h2>
             <div className="h-[2px] flex-1 max-w-[100px] bg-accent/40" />
