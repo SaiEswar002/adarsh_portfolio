@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-serif: var(--app-font-serif);
+  
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+/* LIGHT MODE */
+:root {
+  /* #F8FAFC */
+  --background: 210 40% 98%;
+  /* #111827 */
+  --foreground: 221 39% 11%;
+  /* subtle border */
+  --border: 214 32% 91%;
+  
+  /* #FFFFFF */
+  --card: 0 0% 100%;
+  --card-foreground: 221 39% 11%;
+  --card-border: 214 32% 91%;
+  
+  --popover: 0 0% 100%;
+  --popover-foreground: 221 39% 11%;
+  --popover-border: 214 32% 91%;
+  
+  /* #0F172A */
+  --primary: 222 47% 11%;
+  --primary-foreground: 210 40% 98%;
+  
+  /* #2563EB */
+  --secondary: 221 83% 53%;
+  --secondary-foreground: 0 0% 100%;
+  
+  /* #6B7280 */
+  --muted: 210 40% 96%;
+  --muted-foreground: 215 16% 47%;
+  
+  /* #B8912F */
+  --accent: 43 59% 45%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --input: 214 32% 91%;
+  --ring: 222 47% 11%;
+  
+  --app-font-sans: 'Inter', sans-serif;
+  --app-font-serif: 'Fraunces', serif;
+  
+  --radius: 0.5rem;
+  
+  --chart-1: 222 47% 11%;
+  --chart-2: 43 59% 45%;
+  --chart-3: 221 83% 53%;
+}
+
+.dark {
+  /* #0B0F19 */
+  --background: 222 39% 7%;
+  /* #F8FAFC */
+  --foreground: 210 40% 98%;
+  
+  /* #1E293B */
+  --border: 215 28% 17%;
+  
+  /* #0F172A */
+  --card: 222 47% 11%;
+  --card-foreground: 210 40% 98%;
+  --card-border: 215 28% 17%;
+  
+  --popover: 222 47% 11%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 215 28% 17%;
+  
+  /* Gold as primary accent in dark mode for buttons? 
+     Or stick to light colors. Let's use white for primary buttons in dark mode. */
+  --primary: 210 40% 98%;
+  --primary-foreground: 222 47% 11%;
+  
+  --secondary: 221 83% 53%;
+  --secondary-foreground: 0 0% 100%;
+  
+  /* #1E293B */
+  --muted: 215 28% 17%;
+  /* #9CA3AF */
+  --muted-foreground: 215 20% 65%;
+  
+  --accent: 43 59% 45%;
+  --accent-foreground: 0 0% 100%;
+  
+  --destructive: 0 62% 30%;
+  --destructive-foreground: 210 40% 98%;
+  
+  --input: 215 28% 17%;
+  --ring: 210 40% 98%;
+  
+  --chart-1: 43 59% 45%;
+  --chart-2: 210 40% 98%;
+  --chart-3: 221 83% 53%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif tracking-tight text-foreground;
+  }
+}
